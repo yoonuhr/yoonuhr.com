@@ -1,0 +1,77 @@
+body {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+.flip-board {
+    background-color: #000;
+    border: 5px solid #333;
+    border-radius: 10px;
+    padding: 20px;
+    display: inline-block;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 2px dashed #333;
+}
+
+.row:last-child {
+    border-bottom: none;
+}
+
+.destination {
+    text-align: left;
+}
+
+.destination span {
+    font-size: 2em;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    display: flex; /* Add flex to align letters */
+}
+
+.letter {
+    display: inline-block;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.letter.flip {
+    animation: flip 0.6s linear;
+}
+
+@keyframes flip {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+.destination .airport-code {
+    font-size: 1em;
+    color: #aaa;
+    margin-left: 10px;
+}
+
+.year {
+    font-size: 2em;
+    color: #ffc600;
+    margin-left: 40px;
+}
