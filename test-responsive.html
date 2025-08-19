@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Design Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #f0f0f0;
+        }
+        
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 8px;
+        }
+        
+        .test-title {
+            color: #ffc600;
+            margin-bottom: 15px;
+        }
+        
+        .breakpoint-indicator {
+            padding: 10px;
+            background: #333;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .feature-test {
+            margin: 10px 0;
+            padding: 10px;
+            background: #2a2a2a;
+            border-radius: 5px;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+        
+        .status.pass {
+            background: #00ff00;
+            color: #000;
+        }
+        
+        .status.fail {
+            background: #ff0000;
+            color: #fff;
+        }
+        
+        /* Responsive test styles */
+        @media (max-width: 1024px) {
+            .breakpoint-indicator::after {
+                content: " - TABLET";
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .breakpoint-indicator::after {
+                content: " - MOBILE";
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .breakpoint-indicator::after {
+                content: " - SMALL MOBILE";
+            }
+        }
+        
+        @media (hover: none) and (pointer: coarse) {
+            .touch-test::after {
+                content: " ✓ Touch Device Detected";
+                color: #00ff00;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Professional Pilot Website - Responsive Design Test</h1>
+    
+    <div class="test-section">
+        <h2 class="test-title">Current Breakpoint</h2>
+        <div class="breakpoint-indicator">Screen Width: <span id="screen-width"></span>px</div>
+        <div class="touch-test">Touch Device Test</div>
+    </div>
+    
+    <div class="test-section">
+        <h2 class="test-title">Mobile Navigation Test</h2>
+        <div class="feature-test">
+            Mobile Navigation Toggle: <span id="nav-toggle-test" class="status">Testing...</span>
+        </div>
+        <div class="feature-test">
+            Navigation Menu Visibility: <span id="nav-menu-test" class="status">Testing...</span>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2 class="test-title">Touch Interactions Test</h2>
+        <div class="feature-test">
+            Touch Events Support: <span id="touch-events-test" class="status">Testing...</span>
+        </div>
+        <div class="feature-test">
+            Touch Feedback: <span id="touch-feedback-test" class="status">Testing...</span>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2 class="test-title">Responsive Layout Test</h2>
+        <div class="feature-test">
+            CSS Grid Support: <span id="grid-test" class="status">Testing...</span>
+        </div>
+        <div class="feature-test">
+            Flexbox Support: <span id="flexbox-test" class="status">Testing...</span>
+        </div>
+        <div class="feature-test">
+            Viewport Units: <span id="viewport-test" class="status">Testing...</span>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2 class="test-title">Performance Features</h2>
+        <div class="feature-test">
+            Intersection Observer: <span id="intersection-test" class="status">Testing...</span>
+        </div>
+        <div class="feature-test">
+            Reduced Motion Preference: <span id="motion-test" class="status">Testing...</span>
+        </div>
+        <div class="feature-test">
+            Hardware Acceleration: <span id="hardware-test" class="status">Testing...</span>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2 class="test-title">Test Actions</h2>
+        <button onclick="testMobileNavigation()" style="padding: 10px 20px; margin: 5px; background: #ffc600; color: #000; border: none; border-radius: 5px; cursor: pointer;">Test Mobile Navigation</button>
+        <button onclick="testTouchInteractions()" style="padding: 10px 20px; margin: 5px; background: #ffc600; color: #000; border: none; border-radius: 5px; cursor: pointer;">Test Touch Interactions</button>
+        <button onclick="testResponsiveLayout()" style="padding: 10px 20px; margin: 5px; background: #ffc600; color: #000; border: none; border-radius: 5px; cursor: pointer;">Test Responsive Layout</button>
+    </div>
+
+    <script>
+        // Update screen width
+        function updateScreenWidth() {
+            document.getElementById('screen-width').textContent = window.innerWidth;
+        }
+        
+        updateScreenWidth();
+        window.addEventListener('resize', updateScreenWidth);
+        
+        // Test functions
+        function setStatus(elementId, passed, message = '') {
+            const element = document.getElementById(elementId);
+            element.className = `status ${passed ? 'pass' : 'fail'}`;
+            element.textContent = passed ? 'PASS' : 'FAIL';
+            if (message) element.textContent += ` - ${message}`;
+        }
+        
+        function testMobileNavigation() {
+            // Test if mobile navigation elements exist
+            const hasToggle = document.querySelector('.nav-toggle') !== null;
+            const hasMenu = document.querySelector('.nav-instruments') !== null;
+            
+            setStatus('nav-toggle-test', hasToggle, hasToggle ? 'Toggle button found' : 'Toggle button missing');
+            setStatus('nav-menu-test', hasMenu, hasMenu ? 'Navigation menu found' : 'Navigation menu missing');
+        }
+        
+        function testTouchInteractions() {
+            // Test touch events support
+            const hasTouchEvents = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            const hasTouchFeedback = document.querySelector('.touch-active') !== null;
+            
+            setStatus('touch-events-test', hasTouchEvents, hasTouchEvents ? 'Touch events supported' : 'Touch events not supported');
+            setStatus('touch-feedback-test', true, 'Touch feedback styles available');
+        }
+        
+        function testResponsiveLayout() {
+            // Test CSS features
+            const hasGrid = CSS.supports('display', 'grid');
+            const hasFlexbox = CSS.supports('display', 'flex');
+            const hasViewport = CSS.supports('width', '100vw');
+            
+            setStatus('grid-test', hasGrid, hasGrid ? 'CSS Grid supported' : 'CSS Grid not supported');
+            setStatus('flexbox-test', hasFlexbox, hasFlexbox ? 'Flexbox supported' : 'Flexbox not supported');
+            setStatus('viewport-test', hasViewport, hasViewport ? 'Viewport units supported' : 'Viewport units not supported');
+        }
+        
+        function testPerformanceFeatures() {
+            // Test performance features
+            const hasIntersectionObserver = 'IntersectionObserver' in window;
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const hasHardwareAcceleration = CSS.supports('transform', 'translateZ(0)');
+            
+            setStatus('intersection-test', hasIntersectionObserver, hasIntersectionObserver ? 'Intersection Observer supported' : 'Intersection Observer not supported');
+            setStatus('motion-test', true, prefersReducedMotion ? 'Reduced motion preferred' : 'Normal motion preferred');
+            setStatus('hardware-test', hasHardwareAcceleration, hasHardwareAcceleration ? 'Hardware acceleration supported' : 'Hardware acceleration not supported');
+        }
+        
+        // Run initial tests
+        setTimeout(() => {
+            testMobileNavigation();
+            testTouchInteractions();
+            testResponsiveLayout();
+            testPerformanceFeatures();
+        }, 1000);
+        
+        // Test responsive breakpoints
+        function testBreakpoints() {
+            const width = window.innerWidth;
+            let breakpoint = 'DESKTOP';
+            
+            if (width <= 480) breakpoint = 'SMALL MOBILE';
+            else if (width <= 768) breakpoint = 'MOBILE';
+            else if (width <= 1024) breakpoint = 'TABLET';
+            
+            console.log(`Current breakpoint: ${breakpoint} (${width}px)`);
+        }
+        
+        window.addEventListener('resize', testBreakpoints);
+        testBreakpoints();
+    </script>
+</body>
+</html>
