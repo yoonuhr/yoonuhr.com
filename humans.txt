@@ -1,0 +1,47 @@
+/* TEAM */
+Developer: Captain John Smith
+Contact: captain.smith [at] aviation.com
+LinkedIn: linkedin.com/in/captjsmith
+Location: Dallas, Texas, USA
+
+/* SITE */
+Last update: 2024/01/15
+Language: English
+Doctype: HTML5
+IDE: Kiro AI Assistant
+
+/* TECHNOLOGY */
+HTML5, CSS3, JavaScript
+Responsive Design
+Progressive Enhancement
+Accessibility (WCAG 2.1 AA)
+Performance Optimized
+
+/* AVIATION CREDENTIALS */
+License: Airline Transport Pilot (ATP)
+Type Ratings: Boeing 737, Airbus A320
+Instructor Ratings: CFI, CFII, MEI
+Medical: First Class
+Total Flight Hours: 8,500+
+Current Employer: Southwest Airlines
+Position: Captain / Check Airman
+
+/* THANKS */
+Federal Aviation Administration
+Southwest Airlines
+Aviation Community
+Open Source Community
+
+                            _
+                        .-'` `}
+                    _./)   /     }
+                  .'o   \ |      }
+                  '.___.'`.\    {`
+                  /`\_/  , `.    }
+                 /  /  .'    `--'
+                |  |  /
+                \  `'`
+                 `~~`
+
+"Aviation is proof that given the will, we have the capacity to achieve the impossible."
+- Eddie Rickenbacker
