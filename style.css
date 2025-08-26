@@ -3,11 +3,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
 }
 
 body {
     font-family: 'Courier New', monospace;
-    background-color: #1a1a1a;
+    background-color: #2c3e50;
     color: #ffc600;
     line-height: 1.6;
     overflow-x: hidden;
@@ -17,6 +19,15 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav-logo img {
+    height: 40px; /* Or any other size you prefer */
+    width: auto;
 }
 
 /* Navigation */
@@ -24,10 +35,12 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(26, 26, 26, 0.95);
+    background: rgba(44, 62, 80, 0.95);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    -moz-backdrop-filter: blur(10px);
     z-index: 1000;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #34495e;
 }
 
 .nav-container {
@@ -58,6 +71,8 @@ body {
     padding: 0.5rem 1rem;
     border: 1px solid transparent;
     transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
     text-transform: uppercase;
     font-size: 0.9rem;
 }
@@ -84,6 +99,8 @@ body {
     background: #ffc600;
     margin: 3px 0;
     transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
 }
 
 /* Hero Section */
@@ -91,9 +108,26 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: center;
     padding-top: 80px;
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
     position: relative;
+    overflow: hidden;
+}
+
+.hero-background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    z-index: 0;
+    object-fit: cover;
+    -o-object-fit: cover;
 }
 
 .hero::before {
@@ -103,17 +137,16 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(255, 198, 0, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 198, 0, 0.1) 0%, transparent 50%);
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
     pointer-events: none;
 }
 
 .hero-content {
     text-align: center;
-    margin-bottom: 3rem;
     position: relative;
     z-index: 2;
+    padding: 2rem 0;
 }
 
 .hero-title {
@@ -149,8 +182,8 @@ body {
 
 /* Flip Board Styles */
 .flip-board {
-    background-color: #000;
-    border: 5px solid #333;
+    background-color: #1a252f;
+    border: 5px solid #34495e;
     border-radius: 10px;
     padding: 25px;
     display: inline-block;
@@ -158,6 +191,8 @@ body {
     max-width: 1000px;
     font-family: 'Courier New', monospace;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 2;
 }
 
 .board-header {
@@ -165,7 +200,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0 10px 20px 10px;
-    border-bottom: 2px solid #333;
+    border-bottom: 2px solid #34495e;
     margin-bottom: 10px;
 }
 
@@ -200,7 +235,7 @@ body {
     color: #ffc600;
     font-size: 1em;
     padding: 0 10px 10px 10px;
-    border-bottom: 2px dashed #333;
+    border-bottom: 2px dashed #34495e;
     display: flex;
     justify-content: space-between;
 }
@@ -210,7 +245,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 12px 0;
-    border-bottom: 2px dashed #333;
+    border-bottom: 2px dashed #34495e;
     min-height: 60px;
 }
 
@@ -259,7 +294,7 @@ body {
     height: 50%;
     overflow: hidden;
     backface-visibility: hidden;
-    background: #222;
+    background: #2c3e50;
     color: #ffc600;
     border-radius: 3px;
     text-align: center;
@@ -281,21 +316,55 @@ body {
 
 .flipping .flip-top {
     animation: flip-top 0.3s ease-in-out forwards;
+    -webkit-animation: flip-top 0.3s ease-in-out forwards;
+    -moz-animation: flip-top 0.3s ease-in-out forwards;
     transform-origin: bottom;
+    -webkit-transform-origin: bottom;
+    -moz-transform-origin: bottom;
 }
 
 .flipping .flip-bottom {
     animation: flip-bottom 0.3s ease-in-out forwards;
+    -webkit-animation: flip-bottom 0.3s ease-in-out forwards;
+    -moz-animation: flip-bottom 0.3s ease-in-out forwards;
     transform-origin: top;
+    -webkit-transform-origin: top;
+    -moz-transform-origin: top;
     transform: rotateX(90deg);
+    -webkit-transform: rotateX(90deg);
+    -moz-transform: rotateX(90deg);
 }
 
 @keyframes flip-top {
-    100% { transform: rotateX(-90deg); }
+    100% { 
+        transform: rotateX(-90deg);
+        -webkit-transform: rotateX(-90deg);
+        -moz-transform: rotateX(-90deg);
+    }
 }
 
 @keyframes flip-bottom {
-    100% { transform: rotateX(0deg); }
+    100% { 
+        transform: rotateX(0deg);
+        -webkit-transform: rotateX(0deg);
+        -moz-transform: rotateX(0deg);
+    }
+}
+
+@-webkit-keyframes flip-top {
+    100% { -webkit-transform: rotateX(-90deg); }
+}
+
+@-webkit-keyframes flip-bottom {
+    100% { -webkit-transform: rotateX(0deg); }
+}
+
+@-moz-keyframes flip-top {
+    100% { -moz-transform: rotateX(-90deg); }
+}
+
+@-moz-keyframes flip-bottom {
+    100% { -moz-transform: rotateX(0deg); }
 }
 
 /* Responsive flip board */
@@ -345,6 +414,12 @@ body {
     }
 }
 
+/* Flip Board Section */
+.flip-board-section {
+    padding: 3rem 0;
+    background: #2c3e50;
+}
+
 /* Sections */
 section {
     padding: 5rem 0;
@@ -361,7 +436,7 @@ section {
 
 /* About Section */
 .about {
-    background: #222;
+    background: #34495e;
 }
 
 .about-content {
@@ -369,6 +444,9 @@ section {
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
     align-items: start;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .about-text p {
@@ -384,8 +462,8 @@ section {
 }
 
 .status-item {
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid #333;
+    background: rgba(26, 37, 47, 0.8);
+    border: 1px solid #34495e;
     padding: 1rem;
     border-radius: 4px;
     position: relative;
@@ -419,19 +497,26 @@ section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .experience-card {
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid #333;
+    background: rgba(26, 37, 47, 0.8);
+    border: 1px solid #34495e;
     padding: 2rem;
     border-radius: 8px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    -webkit-transition: transform 0.3s ease, box-shadow 0.3s ease;
+    -moz-transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .experience-card:hover {
     transform: translateY(-5px);
+    -webkit-transform: translateY(-5px);
+    -moz-transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(255, 198, 0, 0.2);
 }
 
@@ -454,18 +539,21 @@ section {
 
 /* Certifications Section */
 .certifications {
-    background: #222;
+    background: #34495e;
 }
 
 .cert-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .cert-card {
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid #333;
+    background: rgba(26, 37, 47, 0.8);
+    border: 1px solid #34495e;
     padding: 2rem;
     border-radius: 8px;
 }
@@ -500,13 +588,16 @@ section {
 /* Contact Section */
 .contact-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     gap: 2rem;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .contact-item {
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid #333;
+    background: rgba(26, 37, 47, 0.8);
+    border: 1px solid #34495e;
     padding: 2rem;
     border-radius: 8px;
     text-align: center;
@@ -537,10 +628,10 @@ section {
 
 /* Footer */
 .footer {
-    background: #111;
+    background: #1a252f;
     padding: 2rem 0;
     text-align: center;
-    border-top: 1px solid #333;
+    border-top: 1px solid #34495e;
 }
 
 .footer p {
@@ -555,7 +646,7 @@ section {
         left: -100%;
         top: 70px;
         flex-direction: column;
-        background-color: rgba(26, 26, 26, 0.98);
+        background-color: rgba(44, 62, 80, 0.98);
         width: 100%;
         text-align: center;
         transition: 0.3s;

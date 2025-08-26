@@ -95,7 +95,7 @@
   - Add Open Graph tags for social media sharing
   - _Requirements: 6.1, 6.2_
 
-- [ ] 13. Implement cross-browser compatibility fixes
+- [x] 13. Implement cross-browser compatibility fixes
   - Test and fix CSS animations in Firefox and Safari
   - Add vendor prefixes for CSS properties as needed
   - Implement fallbacks for unsupported CSS features
